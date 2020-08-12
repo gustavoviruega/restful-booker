@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "7a4f7fb5-134e-4712-b831-cad513e3d153",
+		"name": "Restful-booker - API testing training - Workflow",
+		"description": "# Introduction\nThis is a collection to be used for API Testing purposes.\n\n# Source\nIt is based on the [Restful Booker API](https://restful-booker.herokuapp.com/) created by [Mark Winteringham](https://twitter.com/2bittester).\n\n# Authorization\nBasic Authorization parameters are set at Collection level by using collection's variables.\n\n# Version\n1.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "11A. GET bookings qty",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cef88c88-f42f-4c82-907c-936f4644950c",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3b8cf6d-72b3-48bc-84e6-ba6027bec955",
+						"exec": [
+							"//Test status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Store the quantity of bookings we want to create.\r",
+							"const bookingsToCreate = data.bookingsToCreate;\r",
+							"  \r",
+							"//ids will hold all the booking ids already created. We GET the list of booking ids by using the _.map() Underscore.js function. Using this function we get the json object from the request response, and then _.map() takes a function where each instance that that function gets called is simply a booking in the list of bookings that was returned from the response.\r",
+							"const ids = _.map(pm.response.json(), function(booking){\r",
+							"      return booking.bookingid;\r",
+							"  });\r",
+							"\r",
+							"  pm.globals.set(\"currentBookingCount\", ids.length);\r",
+							"  console.log(ids.length);\r",
+							"\r",
+							"if(pm.globals.get(\"currentBookingCount\") < bookingsToCreate) {\r",
+							"    postman.setNextRequest(\"11B. Create booking\");\r",
+							"  } else {\r",
+							"    pm.globals.unset(\"bookingIds\");\r",
+							"    pm.globals.unset(\"currentBookingCount\");\r",
+							"    pm.globals.unset(\"firstname\");\r",
+							"    pm.globals.unset(\"lastname\");\r",
+							"    pm.globals.unset(\"totalprice\");\r",
+							"    pm.globals.unset(\"depositpaid\");\r",
+							"    pm.globals.unset(\"checkin\");\r",
+							"    pm.globals.unset(\"checkout\");\r",
+							"    pm.globals.unset(\"additionalneeds\");\r",
+							"    postman.setNextRequest(null);\r",
+							"  }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{e_baseurl}}/booking",
+					"host": [
+						"{{e_baseurl}}"
+					],
+					"path": [
+						"booking"
+					]
+				},
+				"description": "Create a booking by passing all the available parameters with valid values.\r\n\r\nNo Auth type selected.\r\n- Use the example file `data.json`."
+			},
+			"response": []
+		},
+		{
+			"name": "11B. Create booking",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5ff29453-772a-4fb8-8e27-d648f19bf757",
+						"exec": [
+							"//Array of X bookings from a data file. Takes data from the dataBookings.json.\r",
+							"const newBookings = data.bookings;\r",
+							"//Assigns a booking randomly from the array above to the variable newBooking. It uses the Underscore.js sample function.\r",
+							"const newBooking = _.sample(newBookings);\r",
+							"pm.globals.set(\"firstname\", newBooking.firstname);\r",
+							"pm.globals.set(\"lastname\", newBooking.lastname);\r",
+							"pm.globals.set(\"totalprice\", newBooking.totalprice);\r",
+							"pm.globals.set(\"depositpaid\", newBooking.depositpaid);\r",
+							"pm.globals.set(\"checkin\", newBooking.bookingdates.checkin);\r",
+							"pm.globals.set(\"checkout\", newBooking.bookingdates.checkout);\r",
+							"pm.globals.set(\"additionalneeds\", newBooking.additionalneeds);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "64ecdd73-6158-4bf7-b92e-8e3050c5a7f3",
+						"exec": [
+							"//Test status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Next request\r",
+							"postman.setNextRequest(\"11A. GET bookings qty\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : \"{{totalprice}}\",\r\n    \"depositpaid\" : \"{{depositpaid}}\",\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{e_baseurl}}/booking",
+					"host": [
+						"{{e_baseurl}}"
+					],
+					"path": [
+						"booking"
+					]
+				},
+				"description": "Create a booking by passing all the available parameters with valid values.\r\n\r\nNo Auth type selected.\r\n- Use the example file `data.json`."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{c_pass}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{c_user}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "82eda22a-73c6-49ad-935e-6008296960d4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "682597cc-848f-46f3-b7b0-49baf4e3682f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "33a18393-80e3-4803-b18d-c0df904e4581",
+			"key": "c_user",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"id": "f39fa397-08bf-4167-8122-922baa9297f9",
+			"key": "c_pass",
+			"value": "password123",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

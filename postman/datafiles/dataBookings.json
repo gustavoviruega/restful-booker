@@ -1,0 +1,40 @@
+[
+{"bookings": [
+{
+    "firstname": "Name One",
+    "lastname": "Last 1",
+    "totalprice": 100
+},
+{
+    "firstname": "Name Two",
+    "lastname": "Last 2",
+    "totalprice": 200
+},
+{
+    "firstname": "Name Three",
+    "lastname": "Last 3",
+    "totalprice": 300
+},
+{
+    "firstname": "Name Four",
+    "lastname": "Last 4",
+    "totalprice": 400
+},
+{
+    "firstname": "Name Five",
+    "lastname": "Last 5",
+    "totalprice": 500
+},
+{
+    "firstname": "Name Six",
+    "lastname": "Last 6",
+    "totalprice": 600
+},
+{
+    "firstname": "Name Seven",
+    "lastname": "Last 7",
+    "totalprice": 700
+}
+]
+}
+]
