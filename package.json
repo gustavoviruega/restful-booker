@@ -10,7 +10,19 @@
     "nodetests": "node tests/tests.js ../postman/environments/BookingLive.postman_environment.json",
     "nodetests-local": "node tests/tests.js ../postman/environments/BookingLocal.postman_environment.json"
   },
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavoviruega/restful-booker.git"
+  },
 
+  "author": "gustavoviruega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavoviruega/restful-booker/issues"
+  },
+
+  "homepage": "https://github.com/gustavoviruega/restful-booker#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Restful-booker - API testing training - Workflow" tests="1" time="0.061">
-  <testsuite name="11A. GET bookings qty" id="59384dba-4fb4-460a-abd0-10090bbedc6e" timestamp="2020-11-10T19:52:00.521Z" tests="1" failures="0" errors="0" time="0.061">
-    <testcase name="Status code is 200" time="0.061" classname="RestfulBookerApiTestingTrainingWorkflow"/>
-  </testsuite>
-</testsuites>
