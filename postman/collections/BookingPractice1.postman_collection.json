@@ -1,0 +1,1775 @@
+{
+	"info": {
+		"_postman_id": "ba5d8d36-f51b-4e96-8ea6-b7f5ba09fdf0",
+		"name": "Booking Practice1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ex0-examples",
+			"item": [
+				{
+					"name": "HealthCheck",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/ping",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View verbs supported by the endpoint Ping",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/ping",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						},
+						"description": "The `OPTIONS` methods returns the HTTP methods that the endpoint accepts.\r\n- Try it using the other endpoints like `auth` or `ping`."
+					},
+					"response": []
+				},
+				{
+					"name": "View verbs supported by the endpoint Booking",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "The `OPTIONS` methods returns the HTTP methods that the endpoint accepts.\r\n- Try it using the other endpoints like `auth` or `ping`."
+					},
+					"response": []
+				},
+				{
+					"name": "View verbs supported by the endpoint Auth",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/auth",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "The `OPTIONS` methods returns the HTTP methods that the endpoint accepts.\r\n- Try it using the other endpoints like `auth` or `ping`."
+					},
+					"response": []
+				},
+				{
+					"name": "Get only the header",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Similar as a GET but it only returns the header."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ex1-examples",
+			"item": [
+				{
+					"name": "All bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "29627294-be58-4d87-9cf6-e13e5281b496",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "99714046-844b-4486-814d-7528ad61e889",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "sdfgsdfgsdfg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking by Checkin date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca3dea31-75f5-4b80-a7cb-0e023b609189",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking?checkin= \"2018-01-01\"",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "checkin",
+									"value": " \"2018-01-01\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "None existing booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2353d15f-f9b4-4d29-a26d-a83742b30760",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/150000000",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"150000000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78ca4d1d-4c06-4825-915f-ac2ea773b7f8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking?firstname=Mary",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "Mary"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking by Incorrect Date Param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4437845e-1416-49ba-a585-3d48a5579d44",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking?checkout=asdfasdf",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "checkin",
+									"value": "\"2019-01-01\"",
+									"disabled": true
+								},
+								{
+									"key": "checkout",
+									"value": "asdfasdf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ex2-examples",
+			"item": [
+				{
+					"name": "Create a correct booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9f76b35-9fd8-433d-bd21-525c3868025a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Example\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 20,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with an invalid name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d12e2a4-4d09-4fa4-8ddc-51c142a1af6a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : 1q2341234,\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-aaa\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with empty value in lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a43da8f-12ce-41af-acfc-d0cade5f4d4b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : \" \",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with null value in lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2630d11c-b191-44b5-a9d4-542eb6e0bf0c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : null,\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with price as string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a157282-7854-4163-bba9-fcd350d458bc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : \"someLastName\",\r\n    \"totalprice\" : \"sadfasdf\",\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-03\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with invalid data type date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a682a1e3-1505-4755-86b7-f47d87e15ef7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : \"someLastName\",\r\n    \"totalprice\" : 1000,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"asdfasdf\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with invalid date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "acefa478-633d-4cac-8121-a5b58764e570",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : \"someLastName\",\r\n    \"totalprice\" : 1000,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-30-30\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with invalid date not validated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb664a14-824f-4cab-aeaa-2f737ac5c626",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"someName\",\r\n    \"lastname\" : \"someLastName\",\r\n    \"totalprice\" : 1000,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with xml body (headers)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d3282cc-85f9-4221-8d17-0f580cf25181",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\n    <firstname>Jim</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with json body and response (headers)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/xml",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/xml",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Create a booking by passing all the available parameters with valid values.\n\nHere you can change the Content-type value from the Headers section to send different types of content. In this case a JSON.\n\n- Content-type headers tells the web service what format of data we are sending to ensure it uses the right parser.\n\nNo Auth type selected."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with xml body and response (headers)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n</booking>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Create a booking by passing all the available parameters with valid values.\n\nHere you can change the Content-type value from the Headers section to send different types of content. In this case a XML.\n\n- Content-type headers tells the web service what format of data are we sending to ensure it uses the right parser.\n\nNo Auth type selected."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking using Presets XML headers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Create a booking by passing all the available parameters with valid values.\n\nHere you can change the Headers values from `Presets` header previously saved. In this case you should select the `XML Header` from the Presets dropdown. This will override the existent header with new values from the presets ones.\n\nNo Auth type selected."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a booking with incorrect body and response types (headers)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08b1e8b0-08d2-41b3-bdbd-767d8a5a4499",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/xml",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/xml",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/zip"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/pdf"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "972c232b-630f-47d4-aa57-e9a8e4ffe91a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4cb1ccb8-8761-42b8-815a-6c54ab957989",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ex3 examples",
+			"item": [
+				{
+					"name": "Not auth set in update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "84c06a89-5895-46d3-b2f6-7e30637cc444",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "27d6498d-6d51-45c6-a374-1270af3cb0be",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Example update\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 20,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Not auth set in delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "582da77c-7d8a-4a80-bae5-822d7a035645",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc29c2c2-9184-4096-b5a4-26ba205bbc1a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token incorrect password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"aaaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/auth",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token incorrect username",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"tester\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/auth",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token incorrect content-type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "Cookie",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/auth",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/auth",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ex4 - examples",
+			"item": [
+				{
+					"name": "Update basic auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4d7066bd-6398-4b5d-84b5-2622cd958584",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8078e125-88cf-4cf9-a99f-4ebbb075fb28",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Example update\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 20,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update using token in the cookie key",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "968634ae-8888-4074-b9f5-c884939864f4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ddcafb8-3acb-43e5-a275-bdafa14fab1a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=2c252b0f470803e"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Example update\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 20,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/91",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"91"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update setting the token on the cookie feature",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c76d2169-0465-4ebb-bfb0-532e19bd3ff4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4184232e-96f9-4190-affd-fade66f7c35a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Example update\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 20,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2019-01-01\",\r\n        \"checkout\" : \"2019-01-03\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/2",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update Booking basic auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "880ffd49-a9d3-43f3-b19a-b7420cafaca4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4fae700b-cb40-42c3-b543-4ff4ba2f4cef",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\" : \"Update name\",\n    \"lastname\" : \"Upadate Last name\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update Booking using token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "09768212-5273-4932-b88f-7ac285e1dad9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6100855f-e211-4aeb-be3e-3429f9775348",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=f343938e4650f8f"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\" : \"Update name\",\n    \"lastname\" : \"Upadate Last name\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/3",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a booking with basic auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7cecc7eb-7224-44cc-805d-90e9ba2e2073",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3ce9b50f-6329-48c2-baae-440177fb584e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/2",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a booking using token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6ba792d-107c-4e5d-a2df-f9f1d2193c31",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "efa5f894-4ad9-4b3c-827c-49abd8fa907f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=0eb9dcbe9e9c9ff"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/3",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"3"
+							]
+						},
+						"description": "el body esta para algo en particular?"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d1d8f9fb-36cc-41f1-85ee-fc9f72c65d8e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fbcee354-f828-463b-8676-35e4f5b44788",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

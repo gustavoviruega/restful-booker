@@ -5,8 +5,12 @@
   "scripts": {
     "start": "cross-env SEED=true node ./bin/www",
     "test": "mocha -R spec tests/spec.js",
-    "build_docs": "apidoc -i ./routes/ -o public/apidoc/"
+    "build_docs": "apidoc -i ./routes/ -o public/apidoc/",
+    "postman_workflow": "newman run ./postman/workflow/workflow.postman_collection.json -e ./postman/workflow/local.postman_environment.json -d ./postman/workflow/dataBookingsComplete.json --reporters cli,junit --reporter-junit-export ./reports/result.xml",
+    "nodetests": "node tests/tests.js ../postman/environments/BookingLive.postman_environment.json",
+    "nodetests-local": "node tests/tests.js ../postman/environments/BookingLocal.postman_environment.json"
   },
+
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -19,6 +23,7 @@
     "js2xmlparser": "^4.0.1",
     "morgan": "^1.10.0",
     "nedb": "^1.8.0",
+    "newman": "^5.2.1",
     "pug": "^2.0.4",
     "validate.js": "^0.13.1"
   },

@@ -1,0 +1,767 @@
+{
+	"info": {
+		"_postman_id": "5e484d2b-d632-4cd4-a169-a63ea5e122cc",
+		"name": "Booking Practice4",
+		"description": "In this practice we'll learn how to make Contract Testing using Postman and how to document the collection/requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Session 7 - Practice 4",
+			"item": [
+				{
+					"name": "All bookings - Validate schema",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1e2ae590-8b4c-4210-8cc8-ef2958b3c88c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dd293164-4458-4f6f-a773-28d25753891d",
+								"exec": [
+									"var responseSchema={\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"type\": \"array\",\r",
+									"  \"title\": \"Bookings list\",\r",
+									"  \"items\": {\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"      \"bookingid\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"      \"bookingid\": {\r",
+									"        \"type\": \"integer\"\r",
+									"      }\r",
+									"    }\r",
+									"  }\r",
+									"};\r",
+									"\r",
+									"var response=pm.response.json();\r",
+									"\r",
+									"pm.test(\"response has valid schema\",function(){\r",
+									"    var validation = tv4.validate(response, responseSchema);\r",
+									"    pm.expect(validation).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "This `GET` request retrieves all the bookings by ID and test that the contract is correct.\r\n\r\nNo Authentication required.\r\n\r\nLibrary used to validate schema:\r\n- https://www.npmjs.com/package/tv4"
+					},
+					"response": [
+						{
+							"name": "GET All bookings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{e_baseurl}}/booking",
+									"host": [
+										"{{e_baseurl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4-kUTAGo68mtF4onOJN6Nyy9hBGGk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Jun 2020 20:36:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"bookingid\": 6\n    },\n    {\n        \"bookingid\": 4\n    },\n    {\n        \"bookingid\": 2\n    },\n    {\n        \"bookingid\": 8\n    },\n    {\n        \"bookingid\": 12\n    },\n    {\n        \"bookingid\": 11\n    },\n    {\n        \"bookingid\": 7\n    },\n    {\n        \"bookingid\": 3\n    },\n    {\n        \"bookingid\": 5\n    },\n    {\n        \"bookingid\": 10\n    },\n    {\n        \"bookingid\": 9\n    },\n    {\n        \"bookingid\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Booking by ID - Validate schema",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f6c31ac8-6f46-4254-b8ec-2fadf749ca69",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3bc14af3-ff9c-446b-8ac6-f469a5855ff5",
+								"exec": [
+									"var responseSchema={\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"title\": \"Booking Schema\",\r",
+									"  \"required\": [\r",
+									"    \"firstname\",\r",
+									"    \"lastname\",\r",
+									"    \"totalprice\",\r",
+									"    \"depositpaid\",\r",
+									"    \"bookingdates\"\r",
+									"    //\"additionalneeds\"\r",
+									"  ],\r",
+									"  \"properties\": {\r",
+									"    \"firstname\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"lastname\": {\r",
+									"      \"type\": \"string\"\r",
+									"\r",
+									"    },\r",
+									"    \"totalprice\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"depositpaid\": {\r",
+									"      \"type\": \"boolean\"\r",
+									"    },\r",
+									"    \"bookingdates\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"required\": [\r",
+									"        \"checkin\",\r",
+									"        \"checkout\"\r",
+									"      ],\r",
+									"      \"properties\": {\r",
+									"        \"checkin\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"checkout\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      }\r",
+									"    },\r",
+									"    \"additionalneeds\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  }\r",
+									"};\r",
+									"\r",
+									"var response=pm.response.json();\r",
+									"\r",
+									"pm.test(\"response has valid schema\",function(){\r",
+									"    var validation = tv4.validate(response, responseSchema);\r",
+									"    pm.expect(validation).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking/1",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						},
+						"description": "This `GET` request retrieves the data from one specific booking and test that the contract is correct.\r\n\r\nNo Authentication required.\r\n\r\nLibrary used to validate schema:\r\n\r\n- https://www.npmjs.com/package/tv4"
+					},
+					"response": [
+						{
+							"name": "GET booking by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{e_baseurl}}/booking/1",
+									"host": [
+										"{{e_baseurl}}"
+									],
+									"path": [
+										"booking",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "170"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"aa-/iR05zr6rUZjqyQUVp+7p/6slVQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jun 2020 15:39:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstname\": \"Mary\",\n    \"lastname\": \"Brown\",\n    \"totalprice\": 634,\n    \"depositpaid\": false,\n    \"bookingdates\": {\n        \"checkin\": \"2019-01-27\",\n        \"checkout\": \"2019-03-11\"\n    },\n    \"additionalneeds\": \"Breakfast\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create booking - Validate schema",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9a8b3291-540b-495d-b778-18fffbe29c55",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "717c7996-cbbd-453f-ad8a-9b146ea2da98",
+								"exec": [
+									"var responseSchema={\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"title\": \"New book schema\",\r",
+									"  \"required\": [\r",
+									"    \"bookingid\",\r",
+									"    \"booking\"\r",
+									"  ],\r",
+									"  \"properties\": {\r",
+									"    \"bookingid\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"booking\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"title\": \"The Booking Schema\",\r",
+									"      \"required\": [\r",
+									"        \"firstname\",\r",
+									"        \"lastname\",\r",
+									"        \"totalprice\",\r",
+									"        \"depositpaid\",\r",
+									"        \"bookingdates\"\r",
+									"      ],\r",
+									"      \"properties\": {\r",
+									"        \"firstname\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"lastname\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"totalprice\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"depositpaid\": {\r",
+									"          \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"bookingdates\": {\r",
+									"          \"type\": \"object\",\r",
+									"          \"required\": [\r",
+									"            \"checkin\",\r",
+									"            \"checkout\"\r",
+									"          ],\r",
+									"          \"properties\": {\r",
+									"            \"checkin\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"checkout\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          }\r",
+									"        },\r",
+									"        \"additionalneeds\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      }\r",
+									"    }\r",
+									"  }\r",
+									"};\r",
+									"\r",
+									"var response=pm.response.json();\r",
+									"\r",
+									"pm.test(\"response has valid schema\",function(){\r",
+									"    var validation = tv4.validate(response, responseSchema);\r",
+									"    pm.expect(validation).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "This `POST` request creates a new booking and test that the contract is correct.\r\n\r\nAuthorization type is `Basic Auth`. The credentials are entered on the Authorization tab. The Authorization header is automatically generated and will be send with the request.\r\n\r\nLibrary used to validate schema:\r\n\r\n- https://www.npmjs.com/package/tv4"
+					},
+					"response": [
+						{
+							"name": "POST Create booking",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{e_baseurl}}/booking",
+									"host": [
+										"{{e_baseurl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "201"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c9-bDU+kXnuaH82uQf6pGKfeKZ3dAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jun 2020 15:44:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"bookingid\": 15,\n    \"booking\": {\n        \"firstname\": \"Gustavo\",\n        \"lastname\": \"Viruega\",\n        \"totalprice\": 100,\n        \"depositpaid\": true,\n        \"bookingdates\": {\n            \"checkin\": \"2018-01-01\",\n            \"checkout\": \"2019-01-01\"\n        },\n        \"additionalneeds\": \"Breakfast\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create booking with error - Validate schema",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e6c52f5f-b8df-494b-99b8-f888a0370db4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "148d55c6-1216-4f8e-8b2f-b940443ff306",
+								"exec": [
+									"var responseSchema={\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"title\": \"New book schema\",\r",
+									"  \"required\": [\r",
+									"    \"bookingid\",\r",
+									"    \"booking\"\r",
+									"  ],\r",
+									"  \"properties\": {\r",
+									"    \"bookingid\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"booking\": {\r",
+									"      \"type\": \"object\",\r",
+									"      //\"type\": \"array\",\r",
+									"      \"title\": \"The Booking Schema\",\r",
+									"      \"required\": [\r",
+									"        \"firstname\",\r",
+									"        \"lastname\",\r",
+									"        \"totalprice\",\r",
+									"        \"depositpaid\",\r",
+									"        \"bookingdates\",\r",
+									"        \"additionalneeds\"\r",
+									"      ],\r",
+									"      \"properties\": {\r",
+									"        \"firstname\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"lastname\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"totalprice\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"depositpaid\": {\r",
+									"          \"type\": \"boolean\"\r",
+									"        },\r",
+									"        \"bookingdates\": {\r",
+									"          \"type\": \"object\",\r",
+									"          \"required\": [\r",
+									"            \"checkin\",\r",
+									"            \"checkout\"\r",
+									"          ],\r",
+									"          \"properties\": {\r",
+									"            \"checkin\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"checkout\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          }\r",
+									"        },\r",
+									"        \"additionalneeds\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      }\r",
+									"    }\r",
+									"  }\r",
+									"};\r",
+									"\r",
+									"var response=pm.response.json();\r",
+									"\r",
+									"pm.test(\"response has valid schema\",function(){\r",
+									"    var validation = tv4.validate(response, responseSchema);\r",
+									"    pm.expect(validation).to.be.true;\r",
+									"});\r",
+									"console.log(tv4.error.message)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookingBaseUrl}}/booking",
+							"host": [
+								"{{bookingBaseUrl}}"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "This `POST` request creates a new booking and the test that evaluates the contract fails.\n\nThe error is logged on the Postman Console.\n\nAuthentication is the same as in [this request](https://web.postman.co/collections/2072910-5e484d2b-d632-4cd4-a169-a63ea5e122cc?version=latest&workspace=29cab029-7f92-447f-8482-65b2f4a07c64#f7d9a1cc-a9a9-49dc-a538-6c0329f2394e).\n\nLibrary used to validate schema:\n\n- https://www.npmjs.com/package/tv4"
+					},
+					"response": [
+						{
+							"name": "POST Create booking with error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\" : \"Gustavo\",\r\n    \"lastname\" : \"Viruega\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{e_baseurl}}/booking",
+									"host": [
+										"{{e_baseurl}}"
+									],
+									"path": [
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "171"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ab-ifT5UI5GqDxzDiwRwRXQt3gG2tg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jun 2020 15:49:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"bookingid\": 16,\n    \"booking\": {\n        \"firstname\": \"Gustavo\",\n        \"lastname\": \"Viruega\",\n        \"totalprice\": 100,\n        \"depositpaid\": true,\n        \"bookingdates\": {\n            \"checkin\": \"2018-01-01\",\n            \"checkout\": \"2019-01-01\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Speaker: Gustavo Viruega github.com/gustavoviruega",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ce97dc46-5683-4273-ab5d-6fb5032afce3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fcd06bb1-12ff-4ccc-b310-d2c07d924c7d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
