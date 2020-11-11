@@ -10,7 +10,7 @@ const env = require(process.argv[2]);
         collection: collections[i],
         environment: env,
         reporters: ['cli', 'junit'],
-        reporter: { junit : { export : '../reports'+collections[i]+'_results.xml' } },
+        reporter: { junit : { export : './reports'+collections[i]+'_results.xml' } },
         iterationCount: 1,
     }, function (err) {
         if(err){ throw err; }
