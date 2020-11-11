@@ -1,5 +1,6 @@
 # restful-booker
 A simple Node booking form for testing RESTful web services.
+Restful-booker author: [Mark Winteringham](https://twitter.com/2bittester)
 
 # Requirements
 - Docker 17.09.0
